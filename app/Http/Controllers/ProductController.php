@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\ProductStock;
+use App\Models\ProductImage;
+use App\Http\Requests\ProductRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Arr;
@@ -19,6 +22,38 @@ class ProductController extends Controller
     public function index()
     {
         return ProductResource::collection(Product::all());
+    }
+
+    public function catalog($gama_id)
+    {
+       
+        $subquery = DB::raw("(SELECT products_img.url FROM products_img WHERE products_img.id_product=products.id_product limit 1) as image");
+
+        $products = Product::where(['gamas.id_gama' => $gama_id, 'products.visible' => 1])
+        ->select(
+            'products.id_product',
+            'products.nombre',
+            'products.precio',
+            'products.precio_iva',
+            'products.visible',
+            //Table:  products_img
+            $subquery ,
+            //Table: subfamilia
+            'subfamilias.id_subfamilia',
+            //table: familia
+            'familias.id_familia',    
+            //Table: gama
+            'gamas.id_gama'
+            
+        )
+        ->join("subfamilias","products.id_subfamilia","=","subfamilias.id_subfamilia")
+        ->join("familias","subfamilias.id_familia","=","familias.id_familia")
+        ->join("gamas","familias.id_gama","=","gamas.id_gama")
+        ->join("stock_producto","products.id_product","=","stock_producto.id_product")
+        ->orderBy('id_product')
+        ->get();
+        
+        return new ProductResource($products);
     }
 
     /**
@@ -58,8 +93,11 @@ class ProductController extends Controller
         }
 
         //UNIR PARA MOSTRAR EN MENSAJE
-        $product = Arr::add($product,'stock', $stock);
-        $product = Arr::add($product, 'images', $images);
+        if($request->has('id_talla') && $request->has('stock_qty') && $request->has('images'))
+        {
+            $product = Arr::add($product,'stock', $stock);
+            $product = Arr::add($product, 'images', $images);
+        }
 
         return (new ProductResource($product))
         ->additional(['message' => 'Registro exitosa']);
@@ -112,8 +150,8 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        $user->delete();
-        return (new ProductResource($user))
+        $product->delete();
+        return (new ProductResource($product))
         ->additional(['message' => 'Eliminacion exitosa.']);
     }
 }
