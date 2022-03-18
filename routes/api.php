@@ -10,6 +10,11 @@ use App\Http\Controllers\RegionController;
 use App\Http\Controllers\FamilyController;
 use App\Http\Controllers\SubFamilyController;
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\IvaController;
+use App\Http\Controllers\SizeController;
+use App\Http\Controllers\SizeTypeController;
+
+
 
 
 //=== Auth ===
@@ -40,3 +45,10 @@ Route::apiResource('subfamilies', SubFamilyController::class);
 
 //=== Marcas ===
 Route::apiResource('brands', BrandController::class);
+
+//=== Ivas ===
+Route::apiResource('ivas', IvaController::class);
+
+//=== Tallas ===
+Route::apiResource('sizes', SizeController::class);
+Route::apiResource('sizestypes', SizeTypeController::class);
