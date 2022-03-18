@@ -28,8 +28,21 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
-        return (new UserResource(User::create($request->all())))
+        $user = new User();
+        $user->NIF = $request->NIF;
+        $user->placa = $request->placa;
+        $user->email = $request->email;
+        $user->name = $request->name;
+        $user->apellido = $request->apellido;
+        $user->password = bcrypt($request->password);
+        $user->telefono1 = $request->telefono1;
+        $user->telefono2 = $request->telefono2;
+        $user->id_gama = $request->id_gama;
+        $user->save();
+
+        return (new UserResource($user))
         ->additional(['message' => 'Registro Exitoso']);
+
     }
 
     /**

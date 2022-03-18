@@ -1,0 +1,6 @@
+1|LRrAujLdlGT7kHtmh0aMzGR8wbGAMXtH7uWpSpNQ
+
+6359922827c3159960e17c9d43d56d6102d4b3cf7f12392ede4aa1585a82c120
+
+INSERT INTO `personal_access_tokens` VALUES (1, 'App\\Models\\User', 106, 'test1@api.com', '6359922827c3159960e17c9d43d56d6102d4b3cf7f12392ede4aa1585a82c120', '["*"]', NULL, '2022-03-18 10:46:00', '2022-03-18 10:46:00');
+
