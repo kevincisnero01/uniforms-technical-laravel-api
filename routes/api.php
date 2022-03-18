@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\GamaController;
+use App\Http\Controllers\RegionController;
 
 
 
@@ -24,3 +25,6 @@ Route::apiResource('products', ProductController::class);
 
 //=== Gama ===
 Route::apiResource('gamas', GamaController::class);
+
+//=== Region ===
+Route::apiResource('regions', RegionController::class);
