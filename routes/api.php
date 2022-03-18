@@ -5,17 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
-
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
+use App\Http\Controllers\GamaController;
 
 
 
@@ -25,8 +15,12 @@ Route::post('/login', [AuthenticationController::class, 'login'])->name('auth.lo
 Route::group(['middleware' => ['auth:sanctum']], function(){
     Route::post('/logout', [AuthenticationController::class, 'logout'])->name('auth.logout');
 });
-
+//=== Usuarios ===
 Route::apiResource('users', UserController::class);
 Route::get('/clients', [UserController::class, 'clients'])->name('users.clients');
 
+//=== Productos ===
 Route::apiResource('products', ProductController::class);
+
+//=== Gama ===
+Route::apiResource('gamas', GamaController::class);
