@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,3 +28,5 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
 
 Route::apiResource('users', UserController::class);
 Route::get('/clients', [UserController::class, 'clients'])->name('users.clients');
+
+Route::apiResource('products', ProductController::class);
