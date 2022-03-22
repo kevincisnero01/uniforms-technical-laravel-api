@@ -16,7 +16,7 @@ class SizeController extends Controller
      */
     public function index()
     {
-        return SizeResource::collection(Size::all());
+        return SizeResource::collection(Size::paginate(10));
     }
 
     /**

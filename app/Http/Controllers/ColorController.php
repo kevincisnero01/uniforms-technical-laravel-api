@@ -16,7 +16,7 @@ class ColorController extends Controller
     */
    public function index()
    {
-       return ColorResource::collection(Color::all());
+       return ColorResource::collection(Color::paginate(10));
    }
 
    /**

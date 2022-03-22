@@ -16,7 +16,7 @@ class IvaController extends Controller
      */
     public function index()
     {
-        return IvaResource::collection(Iva::all());
+        return IvaResource::collection(Iva::paginate(10));
     }
 
     /**

@@ -16,7 +16,7 @@ class GamaController extends Controller
      */
     public function index()
     {
-        return GamaResource::collection(Gama::all());
+        return GamaResource::collection(Gama::paginate(10));
     }
 
     /**

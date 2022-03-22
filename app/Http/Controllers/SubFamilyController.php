@@ -16,7 +16,7 @@ class SubFamilyController extends Controller
      */
     public function index()
     {
-        return SubFamilyResource::collection(SubFamily::all());
+        return SubFamilyResource::collection(SubFamily::paginate(10));
     }
 
     /**

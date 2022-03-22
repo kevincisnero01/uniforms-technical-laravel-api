@@ -21,7 +21,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return ProductResource::collection(Product::all());
+        return ProductResource::collection(Product::paginate(10));
     }
 
     public function catalog($gama_id)
@@ -50,8 +50,7 @@ class ProductController extends Controller
         ->join("familias","subfamilias.id_familia","=","familias.id_familia")
         ->join("gamas","familias.id_gama","=","gamas.id_gama")
         ->join("stock_producto","products.id_product","=","stock_producto.id_product")
-        ->orderBy('id_product')
-        ->get();
+        ->paginate(10);
         
         return new ProductResource($products);
     }

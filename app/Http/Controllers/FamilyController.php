@@ -16,7 +16,7 @@ class FamilyController extends Controller
      */
     public function index()
     {
-        return FamilyResource::collection(Family::all());
+        return FamilyResource::collection(Family::paginate(10));
     }
 
     /**

@@ -16,7 +16,7 @@ class RegionController extends Controller
      */
     public function index()
     {
-        return RegionResource::collection(Region::all());
+        return RegionResource::collection(Region::paginate(10));
     }
 
     /**
