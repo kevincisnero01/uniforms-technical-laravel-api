@@ -15,7 +15,7 @@ class AddUnsignedToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->unsignedInteger('id_rol')->change();
-            $table->unsignedInteger('id_gama')->change();;
+            $table->unsignedInteger('id_gama')->change();
                         
         });
     }
