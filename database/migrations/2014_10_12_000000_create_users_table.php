@@ -22,16 +22,19 @@ class CreateUsersTable extends Migration
             $table->string('apellido');
             $table->string('password');
             $table->rememberToken();
-            $table->tinyInteger ('activo');
-            $table->string('telefono1',11);
-            $table->string('telefono2',11);
+            $table->tinyInteger ('activo')->default(1);
+            $table->string('telefono1');
+            $table->string('telefono2');
             $table->string('foto')->nullable();
-            $table->unsignedInteger('id_rol');
-            $table->unsignedInteger('id_gama');
+            $table->unsignedInteger('id_rol')->default(1);
+            $table->unsignedInteger('id_gama')->default(1);;
             $table->integer('puntos')->nullable();
             $table->unsignedInteger('current_team_id')->nullable();
             $table->string('profile_path_foto')->nullable();
             $table->timestamps();
+
+
+
         });
     }
 

@@ -44,7 +44,6 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
     Route::delete('carts/{cart}',[CartController::class, 'destroy'])->name('carts.destroy');
     Route::delete('carts/{user_id}/clear',[CartController::class, 'clear'])->name('carts.clear');
 
-
     //=== Region ===
     Route::apiResource('regions', RegionController::class);
 
@@ -65,7 +64,7 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
     //=== Color ===
     Route::apiResource('colors', ColorController::class);
 
-});
-
     //=== Gama ===
     Route::apiResource('gamas', GamaController::class);
+
+});

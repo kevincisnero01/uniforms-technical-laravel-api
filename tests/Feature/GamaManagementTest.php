@@ -9,7 +9,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class GamaManagementTest extends TestCase
 {
-    use RefreshDatabase;
+    //use RefreshDatabase;
 
     /** @test */
     public function a_gama_can_be_created()
@@ -17,7 +17,9 @@ class GamaManagementTest extends TestCase
 
         $this->withoutExceptionHandling();
 
-        $response = $this->post('/api/gamas', [
+        $response = $this->withHeaders([
+            'Authorization' => 'Bearer 1|LRrAujLdlGT7kHtmh0aMzGR8wbGAMXtH7uWpSpNQ',
+        ])->post('/api/gamas', [
             "gama" => "CATALOGO POLICIAL",
             "id_region" => "1",
             "descripcion" => "DESCRIPCIÓN DE CATALOGO",
@@ -48,7 +50,9 @@ class GamaManagementTest extends TestCase
 
         Gama::factory(5)->create();
 
-        $response = $this->get('/api/gamas');
+        $response = $this->withHeaders([
+            'Authorization' => 'Bearer 1|LRrAujLdlGT7kHtmh0aMzGR8wbGAMXtH7uWpSpNQ',
+        ])->get('/api/gamas');
         
         $response->assertJsonStructure([
             "data" => [
@@ -69,7 +73,9 @@ class GamaManagementTest extends TestCase
 
         $gama = Gama::factory()->create();
 
-        $response = $this->get('/api/gamas/' . $gama->id_gama);
+        $response = $this->withHeaders([
+            'Authorization' => 'Bearer 1|LRrAujLdlGT7kHtmh0aMzGR8wbGAMXtH7uWpSpNQ',
+        ])->get('/api/gamas/' . $gama->id_gama);
         
         $response->assertOk(200);
         $response->assertJsonStructure([
@@ -97,7 +103,9 @@ class GamaManagementTest extends TestCase
 
         $gama = Gama::factory()->create();
 
-        $response = $this->json('PUT' , '/api/gamas/' . $gama->id_gama, [
+        $response = $this->withHeaders([
+            'Authorization' => 'Bearer 1|LRrAujLdlGT7kHtmh0aMzGR8wbGAMXtH7uWpSpNQ',
+        ])->json('PUT' , '/api/gamas/' . $gama->id_gama, [
             "gama" => "CATALOGO POLICIAL EDIT",
             "id_region" => "1",
             "descripcion" => "DESCRIPCIÓN DE CATALOGO EDIT",
@@ -129,7 +137,9 @@ class GamaManagementTest extends TestCase
 
         $gama = Gama::factory()->create();
 
-        $response = $this->json('DELETE' , '/api/gamas/' . $gama->id_gama);
+        $response = $this->withHeaders([
+            'Authorization' => 'Bearer 1|LRrAujLdlGT7kHtmh0aMzGR8wbGAMXtH7uWpSpNQ',
+        ])->json('DELETE' , '/api/gamas/' . $gama->id_gama);
 
         $response->assertStatus(200);
 
