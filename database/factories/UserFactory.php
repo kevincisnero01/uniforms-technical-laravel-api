@@ -22,12 +22,22 @@ class UserFactory extends Factory
      */
     public function definition()
     {
+        $phones = ['0416','0426','0412','0414','0424'];
+
         return [
-            'name' => $this->faker->name(),
-            'email' => $this->faker->unique()->safeEmail(),
-            'email_verified_at' => now(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-            'remember_token' => Str::random(10),
+        'NIF'  => Str::random(9),
+        'placa' => $this->faker->randomNumber(5,true),
+        'email' => $this->faker->unique()->safeEmail(),
+        'email_verified_at' => now(),
+        'name' => $this->faker->name(),
+        'apellido'=> $this->faker->name(),  
+        'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password,
+        'activo' => 1,
+        'telefono1' => $this->faker->randomElement($phones) .'-'. $this->faker->randomNumber(7,true),
+        'telefono2' => $this->faker->phoneNumber(),
+        'id_rol' => rand(1,10),
+        'id_gama' => rand(1,10),
+        'puntos' => rand(1,10)
         ];
     }
 

@@ -15,22 +15,26 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('NIF');
+            $table->string('NIF');
             $table->string('placa',10);
             $table->string('email')->unique();
+            $table->string('email_verified_at')->nullable();
             $table->string('name');
             $table->string('apellido');
             $table->string('password');
-            $table->rememberToken();
+            $table->text('two_factor_secret')->nullable();
+            $table->text('two_factor_recovery_codes')->nullable();
+            $table->string('password_unhashed')->nullable();
             $table->tinyInteger ('activo')->default(1);
             $table->string('telefono1');
             $table->string('telefono2');
             $table->string('foto')->nullable();
-            $table->unsignedInteger('id_rol')->default(1);
-            $table->unsignedInteger('id_gama')->default(1);;
+            $table->unsignedInteger('id_rol')->nullable();
+            $table->unsignedInteger('id_gama')->nullable();;
             $table->integer('puntos')->nullable();
             $table->unsignedInteger('current_team_id')->nullable();
             $table->string('profile_path_foto')->nullable();
+            $table->rememberToken();
             $table->timestamps();
 
 

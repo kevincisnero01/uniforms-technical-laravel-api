@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Gama;
 use App\Models\User;
+use App\Models\Gama;
+use App\Models\Brand;
+use App\Models\Family;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -14,8 +16,10 @@ class DatabaseSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
-        //User::factory(3)->create();
+    {   
+        User::factory(10)->create();
         Gama::factory(10)->create();
+        Brand::factory(10)->create();
+        $this->call(LoginSeeder::class);
     }
 }
