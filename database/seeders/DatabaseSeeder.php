@@ -6,6 +6,9 @@ use App\Models\User;
 use App\Models\Gama;
 use App\Models\Brand;
 use App\Models\Family;
+use App\Models\Size;
+use App\Models\SizeType;
+use App\Models\SubFamily;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -20,6 +23,10 @@ class DatabaseSeeder extends Seeder
         User::factory(10)->create();
         Gama::factory(10)->create();
         Brand::factory(10)->create();
+        Family::factory(10)->create();
+        SubFamily::factory(10)->create();
+        SizeType::factory(10)->create();
+        Size::factory(10)->create();
         $this->call(LoginSeeder::class);
     }
 }
