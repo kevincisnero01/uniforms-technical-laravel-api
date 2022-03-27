@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Rol;
+use App\Models\Gama;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
@@ -23,6 +25,8 @@ class UserFactory extends Factory
     public function definition()
     {
         $phones = ['0416','0426','0412','0414','0424'];
+        $rols = Rol::pluck('id_rol')->random();
+        $gamas = Gama::pluck('id_gama')->random();
 
         return [
         'NIF'  => Str::random(9),
@@ -35,8 +39,8 @@ class UserFactory extends Factory
         'activo' => 1,
         'telefono1' => $this->faker->randomElement($phones) .'-'. $this->faker->randomNumber(7,true),
         'telefono2' => $this->faker->phoneNumber(),
-        'id_rol' => rand(1,10),
-        'id_gama' => rand(1,10),
+        'id_rol' => $rols ,
+        'id_gama' => $gamas,
         'puntos' => rand(1,10)
         ];
     }

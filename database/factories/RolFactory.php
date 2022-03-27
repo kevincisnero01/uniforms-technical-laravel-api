@@ -2,19 +2,18 @@
 
 namespace Database\Factories;
 
-use App\Models\Size;
-use App\Models\SizeType;
+use App\Models\Rol;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Arr;
 
-class SizeFactory extends Factory
+class RolFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Size::class;
+    protected $model = Rol::class;
 
     /**
      * Define the model's default state.
@@ -23,17 +22,10 @@ class SizeFactory extends Factory
      */
     public function definition()
     {   
-        $talla = Arr::random([
-        'agente',
-        'admin',
-        'super_admin',
-        'master'
-        ]);
-        $tipotallas = SizeType::pluck('id_tipo_talla')->random();
+        $roles = Arr::random(['agente','admin','super_admin','master']);
 
         return [
-            'talla' => $talla,
-            'id_tipo_talla' => $tipotallas,
+            'rol' => $roles
         ];
     }
 }

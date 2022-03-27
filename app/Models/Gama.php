@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
+use App\Models\Region;
 
 class Gama extends Model
 {
@@ -19,4 +21,14 @@ class Gama extends Model
     	'descripcion',
     	'escudo',
     ];
+
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
+
+    public function region()
+    {
+        return $this->belongsTo(Region::class, 'id_region');
+    }
 }

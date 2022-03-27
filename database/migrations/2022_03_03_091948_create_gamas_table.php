@@ -16,10 +16,12 @@ class CreateGamasTable extends Migration
         Schema::create('gamas', function (Blueprint $table) {
             $table->increments('id_gama');
             $table->string('gama');
-            $table->unsignedInteger('id_region');
+            $table->unsignedInteger('id_region')->unsigned();
             $table->string('descripcion');
             $table->string('escudo');
             $table->timestamps();
+
+            $table->foreign('id_region')->references('id_region')->on('regiones');
         });
     }
 

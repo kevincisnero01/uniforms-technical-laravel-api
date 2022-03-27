@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
+use App\Models\Region;
 use App\Models\Gama;
+use App\Models\Rol;
+use App\Models\User;
 use App\Models\Brand;
 use App\Models\Family;
 use App\Models\Size;
@@ -20,8 +22,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {   
-        User::factory(10)->create();
+        
+        Region::factory(10)->create();
         Gama::factory(10)->create();
+        Rol::factory(4)->create();
+        User::factory(10)->create();
         Brand::factory(10)->create();
         Family::factory(10)->create();
         SubFamily::factory(10)->create();

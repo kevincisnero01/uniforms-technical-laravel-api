@@ -29,14 +29,20 @@ class CreateUsersTable extends Migration
             $table->string('telefono1');
             $table->string('telefono2');
             $table->string('foto')->nullable();
-            $table->unsignedInteger('id_rol')->nullable();
-            $table->unsignedInteger('id_gama')->nullable();;
+            $table->unsignedInteger('id_rol');
+            $table->unsignedInteger('id_gama');
             $table->integer('puntos')->nullable();
             $table->unsignedInteger('current_team_id')->nullable();
             $table->string('profile_path_foto')->nullable();
             $table->rememberToken();
             $table->timestamps();
 
+            $table->foreign('id_rol')->references('id_rol')->on('rols')
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
+            $table->foreign('id_gama')->references('id_gama')->on('gamas')
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
 
 
         });
