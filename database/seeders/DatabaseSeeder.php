@@ -11,10 +11,10 @@ use App\Models\Family;
 use App\Models\Size;
 use App\Models\SizeType;
 use App\Models\SubFamily;
-use App\Models\Iva;
 use App\Models\OrderLarge;
 use App\Models\OrderStatus;
 use App\Models\Order;
+use App\Models\Product;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -36,10 +36,11 @@ class DatabaseSeeder extends Seeder
         SubFamily::factory(10)->create();
         SizeType::factory(10)->create();
         Size::factory(10)->create();
-        Iva::factory(4)->create();
+        $this->call(IvaSeeder::class);
         OrderStatus::factory(10)->create();
         OrderLarge::factory(10)->create();
         Order::factory(20)->create();
+        Product::factory(10)->create();
         $this->call(LoginSeeder::class);
     }
 }

@@ -14,7 +14,7 @@ class CreateIvasTable extends Migration
     public function up()
     {
         Schema::create('ivas', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id_iva');
             $table->string('descripcion');
             $table->float('porcentaje',5,2);
             $table->timestamps();
