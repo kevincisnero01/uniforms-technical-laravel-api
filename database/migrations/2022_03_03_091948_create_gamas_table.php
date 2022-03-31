@@ -21,7 +21,9 @@ class CreateGamasTable extends Migration
             $table->string('escudo');
             $table->timestamps();
 
-            $table->foreign('id_region')->references('id_region')->on('regiones');
+            $table->foreign('id_region')->references('id_region')->on('regiones')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
         });
     }
 

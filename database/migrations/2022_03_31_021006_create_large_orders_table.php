@@ -14,11 +14,13 @@ class CreateLargeOrdersTable extends Migration
     public function up()
     {
         Schema::create('pedido_mayor', function (Blueprint $table) {
-            $table->increments('id_pedidos_mayor');
+            $table->increments('id_pedido_mayor');
             $table->bigInteger('id_user')->unsigned();
             $table->timestamps();
 
-            $table->foreign('id_user')->references('id')->on('users');
+            $table->foreign('id_user')->references('id')->on('users')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
         });
     }
 
