@@ -14,7 +14,7 @@ class ImportColorsTable extends Migration
      */
     public function up()
     {
-        DB::unprepared(file_get_contents('C:/laragon/www/technicaluniforms/database/schema/color_dump.sql'));
+        DB::unprepared(file_get_contents('C:/laragon/www/uniforms-api-project/database/schema/color_dump.sql'));
 
     }
 

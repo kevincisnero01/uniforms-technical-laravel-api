@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
         Region::factory(10)->create();
         Gama::factory(10)->create();
         Rol::factory(4)->create();
-        User::factory(10)->create();
+        User::factory(3)->create();
         Brand::factory(10)->create();
         Family::factory(10)->create();
         SubFamily::factory(10)->create();
